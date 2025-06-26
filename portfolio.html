@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lubdha Chaudhari | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #38bdf8;
+      --accent-dark: #0ea5e9;
+      --accent-light: #7dd3fc;
+      --text: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0f1d, #0f172a);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    
+    /* Background particles effect */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    /* Header & Navigation */
+    header {
+      background-color: rgba(30, 41, 59, 0.95);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    
+    header.scrolled {
+      padding: 0.7rem 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo i {
+      color: var(--accent-light);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    nav a:hover {
+      color: var(--accent);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* Home Section */
+    #home {
+      text-align: center;
+      padding-top: 10rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .home-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .home-title {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .home-subtitle {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--accent-light);
+    }
+    
+    .home-description {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      color: var(--text-secondary);
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.5);
+    }
+    
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      color: var(--accent);
+      font-size: 2rem;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+      40% {transform: translateY(-20px) translateX(-50%);}
+      60% {transform: translateY(-10px) translateX(-50%);}
+    }
+    
+    /* About Section */
+    .about-content {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      flex: 1;
+      max-width: 350px;
+      position: relative;
+    }
+    
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      border: 3px solid var(--accent);
+      transition: var(--transition);
+    }
+    
+    .about-image:hover img {
+      transform: scale(1.03);
+    }
+    
+    .about-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--accent);
+      top: 20px;
+      left: 20px;
+      border-radius: 20px;
+      z-index: -1;
+    }
+    
+    .about-text {
+      flex: 2;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+    }
+    
+    .skill-category h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-category ul {
+      list-style: none;
+    }
+    
+    .skill-category li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-category li i {
+      color: var(--accent);
+    }
+    
+    /* Projects Section */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+    }
+    
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.1);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-content h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .project-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border-radius: 5px;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+    
+    .project-link:hover {
+      background: var(--accent);
+      color: white;
+    }
+    
+    /* Modal Slider */
+    .slider-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.98);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .slider-modal.active {
+      display: block;
+      opacity: 1;
+    }
+    
+    .slider-image {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      margin: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .slider-nav {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .slider-nav button {
+      background-color: var(--accent);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .slider-nav button:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-3px);
+    }
+    
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .close:hover {
+      color: var(--accent);
+      transform: rotate(90deg);
+    }
+    
+    /* Awards Section */
+    .award-item {
+      display: flex;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.7);
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-radius: 15px;
+      flex-wrap: wrap;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    
+    .award-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+    
+    .award-item img {
+      width: 250px;
+      height: auto;
+      border-radius: 10px;
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .award-text {
+      flex: 1;
+      color: var(--text);
+    }
+    
+    .award-text h3 {
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+    }
+    
+    .award-text p {
+      color: var(--text-secondary);
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-info p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Resume Section */
+    .resume-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .resume-content p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.9);
+      border-top: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .back-to-top {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border-radius: 50px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .back-to-top:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: var(--transition);
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        margin-bottom: 2rem;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background: rgba(30, 41, 59, 0.95);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+        gap: 2rem;
+        backdrop-filter: blur(10px);
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .home-title {
+        font-size: 2.8rem;
+      }
+      
+      .home-subtitle {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .award-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .award-item img {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+        width: 100%;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .home-title {
+        font-size: 2.3rem;
+      }
+      
+      .home-subtitle {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background particles -->
+  <div id="particles-js"></div>
+  
+  <!-- Header -->
+  <header id="header">
+    <nav>
+      <a href="#" class="logo">
+        <i class="fas fa-code"></i>
+        <span>Lubdha</span>
+      </a>
+      
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#award-photos">Awards</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume">Resume</a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Home Section -->
+  <section id="home">
+    <div class="home-content animate-on-scroll">
+      <h1 class="home-title">Hello there! I'm <span style="color: var(--accent);">Lubdha Chaudhari</span>,</h1>
+      <h2 class="home-subtitle">Computer Engineering Student & Developer</h2>
+      <p class="home-description">Third-year Computer Engineering student at NMIET College, Pune with a passion for creating intuitive mobile applications and innovative solutions.</p>
+      <a href="#projects" class="cta-button">View My Work</a>
+    </div>
+    <a href="#about" class="scroll-down">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content animate-on-scroll">
+      <div class="about-image">
+        <img src="lubdha.jpg" alt="Lubdha Chaudhari">
+      </div>
+      <div class="about-text">
+        <p>I began my journey in tech with a diploma in Computer Engineering from Government Polytechnic, Jalgaon, where I built a strong foundation in languages like C, C++, JavaScript, HTML, Python, PHP, Java, and Advanced Java.</p>
+        
+        <p>My passion lies in Android application development using Java, and I love creating intuitive, user-friendly mobile experiences. I have also completed industrial training in Python and the Django framework, which played a key role in shaping my backend development skills.</p>
+        
+        <p>For our final year capstone project, I co-developed an online examination platform using Python and Django. The system supported both teachers and students and featured a live cheating detection module, blending tech and integrity in digital assessments.</p>
+        
+        <p>Outside of tech, I enjoy playing the ukulele and reading poetry, which help keep my creativity alive.</p>
+        
+        <p>Let’s connect and create something impactful together!</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category animate-on-scroll">
+        <h3><i class="fas fa-laptop-code"></i> Languages</h3>
+        <ul>
+          <li><i class="fas fa-check"></i> Java</li>
+          <li><i class="fas fa-check"></i> Python</li>
+          <li><i class="fas fa-check"></i> C/C++</li>
+          <li><i class="fas fa-check"></i> JavaScript</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category animate-on-scroll">
+        <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+        <ul>
+          <li><i class="fas fa-check"></i> HTML & CSS</li>
+          <li><i class="fas fa-check"></i> JavaScript</li>
+          <li><i class="fas fa-check"></i> PHP</li>
+          <li><i class="fas fa-check"></i> Django</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category animate-on-scroll">
+        <h3><i class="fas fa-database"></i> Database</h3>
+        <ul>
+          <li><i class="fas fa-check"></i> SQLite</li>
+          <li><i class="fas fa-check"></i> Firebase</li>
+          <li><i class="fas fa-check"></i> MySQL</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category animate-on-scroll">
+        <h3><i class="fas fa-tools"></i> Tools</h3>
+        <ul>
+          <li><i class="fas fa-check"></i> Android Studio</li>
+          <li><i class="fas fa-check"></i> Git</li>
+          <li><i class="fas fa-check"></i> VS Code</li>
+          <li><i class="fas fa-check"></i> Docker</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title">My Projects</h2>
+    <div class="project-grid">
+      <!-- Project 1 -->
+      <div class="project-card animate-on-scroll" onclick="openSlider(0)">
+        <div class="project-image">
+          <img src="onlineexam1(14).jpeg" alt="Online Exam System">
+        </div>
+        <div class="project-content">
+          <h3>Online Examination System</h3>
+          <p>Secure online exams with live proctoring and analytics.</p>
+          <div class="project-links">
+            <a href="https://github.com/lubdha-chaudhari/Online-Examination-System-.git" target="_blank" class="project-link" onclick="event.stopPropagation()">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 2 -->
+      <div class="project-card animate-on-scroll" onclick="openSlider(1)">
+        <div class="project-image">
+          <img src="securesync6.jpg" alt="SecureSync Notes App">
+        </div>
+        <div class="project-content">
+          <h3>SecureSync Notes App</h3>
+          <p>Firebase synced Android notes app with encryption.</p>
+          <div class="project-links">
+            <a href="https://github.com/lubdha-chaudhari/SecureSync-Notes_App.git" target="_blank" class="project-link" onclick="event.stopPropagation()">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 3 -->
+      <div class="project-card animate-on-scroll" onclick="openSlider(2)">
+        <div class="project-image">
+          <img src="agricycle.png" alt="AgriCycle App">
+        </div>
+        <div class="project-content">
+          <h3>AgriCycle Web App</h3>
+          <p>Farmers and buyers platform for selling agricultural waste, promoting sustainable environment.</p>
+          <div class="project-links">
+            <a href="https://github.com/ChinmayaKolhe/agricycle-MainProject" target="_blank" class="project-link" onclick="event.stopPropagation()">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 4 -->
+      <div class="project-card animate-on-scroll" onclick="openSlider(3)">
+        <div class="project-image">
+          <img src="quickvend1.jpg" alt="VendorFinder App">
+        </div>
+        <div class="project-content">
+          <h3>VendorFinder (QuickVend)</h3>
+          <p>Street vendor locator with reviews, ratings, and followers.</p>
+          <div class="project-links">
+            <a href="https://github.com/lubdha-chaudhari/Vendor.git" target="_blank" class="project-link" onclick="event.stopPropagation()">
+              <i class="fab fa-github"></i> Vendor App
+            </a>
+            <a href="https://github.com/Vaishnavikale05/QuickVend-User-App.git" target="_blank" class="project-link" onclick="event.stopPropagation()">
+              <i class="fab fa-github"></i> User App
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Image Slider Modal -->
+  <div id="sliderModal" class="slider-modal">
+    <span class="close" onclick="closeSlider()">&times;</span>
+    <img id="sliderImg" class="slider-image" src="">
+    <div class="slider-nav">
+      <button onclick="prevImage()"><i class="fas fa-chevron-left"></i> Prev</button>
+      <button onclick="nextImage()">Next <i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+  
+  <!-- Award Gallery Section -->
+  <section id="award-photos">
+    <h2 class="section-title">Awards & Achievements</h2>
+    
+    <div class="award-item animate-on-scroll">
+      <img src="techprenuer.jpg" alt="TechPreneur Raisoni 2024">
+      <div class="award-text">
+        <h3>TechPreneur Competition (2024)</h3>
+        <p>🏆 1st Prize at GH Raisoni College of Engineering, Jalgaon for presenting the <strong>Online Voting Web App</strong>.</p>
+      </div>
+    </div>
+    
+    <div class="award-item animate-on-scroll">
+      <img src="techtalk.jpg" alt="TechTalk Cummins 2025">
+      <div class="award-text">
+        <h3>TechTalk Competition (2025)</h3>
+        <p>🏆 1st Prize at Cummins College of Engineering, Pune for delivering a presentation on <strong>Internet of Things (IoT)</strong>.</p>
+      </div>
+    </div>
+    
+    <div class="award-item animate-on-scroll">
+      <img src="techquest.jpg" alt="TechQuest NMIET">
+      <div class="award-text">
+        <h3>TechQuest (2025)</h3>
+        <p>🥈 2nd Prize at NMIET College, Pune for showcasing technical excellence in the <strong>TechQuest challenge</strong>.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-info animate-on-scroll">
+        <p>Feel free to reach out to me for collaborations, opportunities, or just to say hello!</p>
+        
+        <p>
+          <i class="fas fa-envelope"></i> 
+          <strong>Email:</strong> 
+          <a href="mailto:lubdha.chaudhari@nmiet.edu.in" style="color: var(--accent);">lubdha.chaudhari@nmiet.edu.in</a>
+        </p>
+        
+        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+        
+        <div class="social-links">
+          <a href="https://github.com/lubdha-chaudhari" target="_blank" class="social-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://linkedin.com/in/lubdha-chaudhari-72b653260/" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://leetcode.com/u/lubdha_25/" target="_blank" class="social-link">
+            <i class="fas fa-code"></i> LeetCode
+          </a>
+          <a href="https://unstop.com/u/lubdhcha1541" target="_blank" class="social-link">
+            <i class="fas fa-trophy"></i> Unstop
+          </a>
+          <a href="https://www.sololearn.com/en/profile/23126603" target="_blank" class="social-link">
+            <i class="fas fa-graduation-cap"></i> SoloLearn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Resume Section -->
+  <section id="resume">
+    <h2 class="section-title">My Resume</h2>
+    <div class="resume-content animate-on-scroll">
+      <p>You can view and download my resume by clicking the button below.</p>
+      <a href="resume.pdf#toolbar=0&navpanes=0&scrollbar=0" target="_blank" class="cta-button">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i> Back to Top
+      </a>
+      <p>© 2025 Lubdha Chaudhari | Portfolio</p>
+      <p>Designed with ❤️ and ☕</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Particles.js configuration
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#38bdf8" },
+        shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#38bdf8",
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+    
+    // Project images for slider
+    const projectImages = [
+      ["onlineexam1(14).jpeg","onlineexam1(13).jpeg","onlineexam1(12).jpeg","onlineexam1(11).jpeg","onlineexam1(10).jpeg","onlineexam1(15).jpg","onlineexam1(9).jpeg","onlineexam1(8).jpeg","onlineexam1(7).jpeg","onlineexam1(6).jpeg","onlineexam1(5).jpeg","onlineexam1(4).jpeg","onlineexam1(3).jpeg","onlineexam1(2).jpeg","onlineexam1(16).jpeg"],
+      ["securesync1.jpg", "securesync2.jpg", "securesync3.jpg", "securesync4.jpg", "securesync5.jpg", "securesync6.jpg"],
+      ["agricycle.png","agricycle2.png","agricycle3.png","agricycle4.png","agricycle5.png","agricycle6.png","agricycle7.png","agricycle8.png","agricycle9.png"],
+      ["quickvend1.jpg","quickvend3.jpg","quickvend4.jpg","quickvend5.jpg","quickvend6.jpg","quickvend2.jpg","quickvend10.jpg","quickvend7.jpg","quickvend8.jpg","quickvend9.jpg"]
+    ];
+
+    let currentProject = 0;
+    let currentImageIndex = 0;
+
+    function openSlider(index) {
+      currentProject = index;
+      currentImageIndex = 0;
+      document.getElementById("sliderImg").src = projectImages[index][0];
+      document.getElementById("sliderModal").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSlider() {
+      document.getElementById("sliderModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    function nextImage() {
+      const images = projectImages[currentProject];
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      document.getElementById("sliderImg").src = images[currentImageIndex];
+    }
+
+    function prevImage() {
+      const images = projectImages[currentProject];
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      document.getElementById("sliderImg").src = images[currentImageIndex];
+    }
+
+    // Close modal when clicking outside the image
+    document.getElementById("sliderModal").addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeSlider();
+      }
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+    
+    // Header scroll effect
+    window.addEventListener("scroll", function() {
+      const header = document.getElementById("header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+    
+    // Scroll animations
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animateElements.forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
